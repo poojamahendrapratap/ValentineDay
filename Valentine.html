@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Forever Valentine ❤️</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:black;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://plus.unsplash.com/premium_photo-1664110691170-8d9fbc952eb0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1 {
+    font-family:'Great Vibes',cursive;
+    font-size:90px;
+}
+
+.romantic-btn {
+    background:#ff4e73;
+    color:white;
+    border:none;
+    border-radius:30px;
+    padding:12px 30px;
+    margin:10px;
+    transition:0.3s;
+}
+
+.romantic-btn:hover {
+    background:#ff1e56;
+}
+
+/* Hearts */
+.heart {
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:floatUp linear forwards;
+    color:#ff4e73;
+}
+
+@keyframes floatUp {
+    to {
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+
+/* Typing effect */
+#loveLetter {
+    font-size:20px;
+    margin-top:30px;
+    min-height:60px;
+}
+
+/* Carousel */
+.carousel img {
+    height:450px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+/* Fireworks */
+.firework {
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:yellow;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    to {
+        transform:scale(15);
+        opacity:0;
+    }
+}
+
+#noBtn {
+    position:relative;
+}
+</style>
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2023/03/02/audio_8a3b3d4f0f.mp3?filename=romantic-love-ambient-141997.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+    <h1>Happy Valentine’s Day ❤️</h1>
+    <p>You are my forever and always 💕</p>
+    <button class="romantic-btn" onclick="startExperience()">Start Our Love Story 💖</button>
+</div>
+</section>
+
+<!-- CONTENT -->
+<div class="container text-center py-5" id="mainContent" style="display:none;">
+
+<h2>Prospective Memory 📸</h2>
+
+<div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="https://plus.unsplash.com/premium_photo-1702635213447-6117e5859684?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://images.pexels.com/photos/1004013/pexels-photo-1004013.jpeg">
+</div>
+<div class="carousel-item">
+<img src="https://images.unsplash.com/photo-1518414881329-0f96c8f2a924?q=80&w=889&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100">
+</div>
+</div>
+</div>
+
+<h2>Will You Be My Valentine? 💍</h2>
+
+<button class="romantic-btn" onclick="sayYes()">YES ❤️</button>
+<button class="romantic-btn" id="noBtn" onmouseover="moveNo()">NO 😢</button>
+
+<h3 class="mt-5">A Love Letter For You 💌</h3>
+<div id="loveLetter"></div>
+
+<button class="romantic-btn mt-4" onclick="openGift()">Open Your Surprise 🎁</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function startExperience(){
+    document.getElementById("bgMusic").play();
+    document.getElementById("mainContent").style.display="block";
+    document.querySelector(".hero").style.display="none";
+    typeLetter();
+}
+
+function sayYes(){
+    alert("You just made me the happiest person alive 😭❤️");
+    for(let i=0;i<15;i++){
+        let fire=document.createElement("div");
+        fire.classList.add("firework");
+        fire.style.left=Math.random()*100+"vw";
+        fire.style.top=Math.random()*100+"vh";
+        document.body.appendChild(fire);
+        setTimeout(()=>fire.remove(),1000);
+    }
+}
+
+function moveNo(){
+    let btn=document.getElementById("noBtn");
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"vw";
+    btn.style.top=Math.random()*80+"vh";
+}
+
+function openGift(){
+    alert("My gift is my heart… and it belongs to you forever 💖");
+}
+
+/* Typing Effect */
+let text="From the moment you came into my life, Everything around me shone so bright. You are my safe place, my joy, my forever, I love you more than words can ever say 💖.Par sach kahu, shadi ka khayal, Pehle mujhe daraata tha thoda sa. Jab koi naya rishta batata tha, Main khud mein hi kho jaati thi. Sochti thi, ache ladke sirf sapno mein milte hain, Main kabhi razi nahi thi. Phir bhi ek “Hello” se shuru hui, Hamari pyar ki yeh nayi kahani. Pehle call lagana bhi mushkil tha, Phir ghanto tak baatein ho gayi.Aur dheere-dheere, main sochne lagi… Kab sapno mein hi baat hui?";
+let i=0;
+function typeLetter(){
+    if(i<text.length){
+        document.getElementById("loveLetter").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeLetter,40);
+    }
+}
+
+/* Floating Hearts */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>
